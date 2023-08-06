@@ -30,7 +30,7 @@ import rustpadRaw from "../rustpad-server/src/rustpad.rs?raw";
 import languages from "./languages.json";
 import animals from "./animals.json";
 import Rustpad, { UserInfo } from "./rustpad";
-import useHash from "./useHash";
+import useHistory from "./useHistory";
 import ConnectionStatus from "./ConnectionStatus";
 import Footer from "./Footer";
 import User from "./User";
@@ -63,7 +63,7 @@ function App() {
   const [editor, setEditor] = useState<editor.IStandaloneCodeEditor>();
   const [darkMode, setDarkMode] = useStorage("darkMode", () => false);
   const rustpad = useRef<Rustpad>();
-  const id = useHash();
+  const id = useHistory();
   const [isCollapsed, setIsCollapsed] = useState(false);
 
   useEffect(() => {
@@ -131,7 +131,7 @@ function App() {
   }
 
   async function handleCopy() {
-    await navigator.clipboard.writeText(`${window.location.origin}/#${id}`);
+    await navigator.clipboard.writeText(`${window.location.origin}/${id}`);
     toast({
       title: "Copied!",
       description: "Link copied to clipboard",
