@@ -243,7 +243,7 @@ function App() {
                 variant="outline"
                 bgColor={darkMode ? "#3c3c3c" : "white"}
                 borderColor={darkMode ? "#3c3c3c" : "white"}
-                value={`${window.location.origin}/#${id}`}
+                value={`${window.location.origin}/${id}`}
               />
               <InputRightElement width="3.5rem">
                 <Button
