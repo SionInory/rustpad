@@ -67,6 +67,10 @@ function App() {
   const [isCollapsed, setIsCollapsed] = useState(false);
 
   useEffect(() => {
+    setIsCollapsed(screen.width <= 640);
+  }, []);
+  
+  useEffect(() => {
     if (editor?.getModel()) {
       const model = editor.getModel()!;
       model.setValue("");
@@ -181,7 +185,7 @@ function App() {
         fontSize="sm"
         py={0.5}
       >
-        WoahAI - CoCode
+        Pad - Atori
       </Box>
       <Flex flex="1 0" minH={0}>
         {!isCollapsed && (
@@ -323,19 +327,19 @@ function App() {
           {isCollapsed && (
             <Button
               onClick={() => setIsCollapsed(false)}
-              mt={2}
-              colorScheme="purple"
-              variant="outline"
-              bgColor="transparent"
+              position="absolute"
+              bottom=".25%"
+              left="xs"
+              transform="translate(0%, -50%)"
+              bgColor="rgba(128, 128, 128, 0.3)"
               _hover={{
                 bgColor: darkMode ? "rgba(87, 87, 89, 0.2)" : "rgba(128, 128, 128, 0.2)",
               }}
               _active={{
                 bgColor: darkMode ? "rgba(87, 87, 89, 0.4)" : "rgba(128, 128, 128, 0.4)",
               }}
-              size="sm"
             >
-              Expand menu
+              {">"}
             </Button>
 
           )}
